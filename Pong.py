@@ -48,4 +48,19 @@ def setup_game():
     ball.dx = 5
     ball.dx = -5
 
-   score_board = turtleTurtle() 
+    score_board = turtle.Turtle() 
+    score_board.speed(0)
+    score_board.color('blue')
+    score_board.penup()
+    score_board.hideturtle()
+    score_board.goto(0, 260)
+    score_board.write('Left Player: 0 -- Right Player: 0',
+                     align='center', font=('Arial', 24, 'normal'))
+    return screen, ball, l_paddle, r_paddle, score_board
+
+def pong_game():
+    game_components = setup_game()
+    screen = game_components[0]
+    
+    
+
