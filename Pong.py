@@ -46,7 +46,8 @@ def setup_game():
     ball.penup()
     ball.goto(0, 0)
     ball.dx = 5
-    ball.dx = -5
+    ball.dy = -5
+
 
     score_board = turtle.Turtle() 
     score_board.speed(0)
@@ -73,6 +74,62 @@ def pong_game():
 
     def l_paddle_down():
         l_paddle.sety(l_paddle.ycor() - 20)
+
+    def r_paddle_up():
+        r_paddle.sety(r_paddle.ycor() + 20)
+
+    def r_paddle_down():
+        r_paddle.sety(r_paddle.ycor() - 20)
+
+    screen.listen()
+    screen.onkeypress(l_paddle_up, 'e')
+    screen.onkeypress(l_paddle_down, 'x')
+    screen.onkeypress(r_paddle_up, 'Up')
+    screen.onkeypress(r_paddle_down, 'Down')
+
+    while True:
+        screen.update()
+        ball.setx(ball.xcor()+ball.dx)
+        ball.sety(ball.ycor()+ball.dy)
+
+        if ball.ycor() > 280:
+            ball.sety(280)
+            ball.dy *= -1
+
+        if ball.ycor() < -280:
+            ball.sety(-280)
+            ball.dy *= -1
+
+        if ball.xcor() > 500:
+            ball.goto(0, 0)
+            ball.dy *= -1
+            l_score, r_score, score_board = update_score(
+               l_score, r_score, 'l', score_board)
+            continue
+
+        elif ball.xcor() < -500:
+            ball.goto(0, 0)
+            ball.dy *= -1
+            l_score, r_score, score_board = update_score(
+               l_score, r_score, 'r', score_board)
+            continue
+
+        if ((ball.xcor() > 360) and
+           (ball.xcor() < 370) and
+           (ball.ycor() < r_paddle.ycor()+40) and
+               (ball.ycor() > r_paddle.ycor()-40)):
+           ball.setx(360)
+           ball.dx *= -1
+
+        if ((ball.xcor() < -360) and
+               (ball.xcor() > -370) and
+               (ball.ycor() < l_paddle.ycor()+40) and
+               (ball.ycor() > l_paddle.ycor()-40)):
+           ball.setx(-360)
+           ball.dx *= -1
+
+if __name__ == '__main__':
+    pong_game()
 
     
 
