@@ -27,3 +27,25 @@ def setup_game():
     l_paddle.speed(0)
     l_paddle.shape('square')
     l_paddle.color('black')
+    l_paddle.shapesize(stretch_wid=6, stretch_len=2)
+    l_paddle.penup()
+    l_paddle.goto(-400, 0)
+
+    r_paddle = turtle.Turtle()
+    r_paddle.speed(0)
+    r_paddle.shape('square')
+    r_paddle.color('black')
+    r_paddle.shapesize(stretch_wid=6, stretch_len=2)
+    r_paddle.penup()
+    r_paddle.goto(400, 0)
+
+    ball = turtle.Turtle()
+    ball.speed(40)
+    ball.shape('circle')
+    ball.color('blue')
+    ball.penup()
+    ball.goto(0, 0)
+    ball.dx = 5
+    ball.dx = -5
+
+   score_board = turtleTurtle() 
