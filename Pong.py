@@ -61,6 +61,18 @@ def setup_game():
 def pong_game():
     game_components = setup_game()
     screen = game_components[0]
-    
+    ball = game_components[1]
+    l_paddle = game_components[1]
+    r_paddle = game_components[3]
+    score_board = game_components[4]
+    l_score = 0
+    r_score = 0
+
+    def l_paddle_up():
+        l_paddle.sety(l_paddle.ycor() + 20)
+
+    def l_paddle_down():
+        l_paddle.sety(l_paddle.ycor() - 20)
+
     
 
